@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 1000
+      min-spare: 30
+
+  servlet:
+    context-path: /admin
+
+spring:
+  datasource:
+    name: test
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test
+    username: root
+    password: 123123
+
+logging:
+  level:
+    com: debug
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.ssmdemo.model
+
+# 下面几个是自定义的，rsa也是自定义的
+rsa:
+  key:
+    pubKeyPath: C:\Users\robod\Desktop\auth_key\id_key_rsa.pub
+    priKeyPath: C:\Users\robod\Desktop\auth_key\id_key_rsa

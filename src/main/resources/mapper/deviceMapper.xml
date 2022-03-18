@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ssmdemo.dao.DeviceDao">
+    <select id="selectDevice" resultType="com.example.ssmdemo.model.Device" parameterType="com.example.ssmdemo.model.Device">
+        select * from device WHERE 1=1
+        <if test="id != null and id != ''">and id = #{id}</if>
+        <if test="title != null and title != ''">and title = #{title}</if>
+        <if test="mac != null and mac != ''">and mac = #{mac}</if>
+        <if test="user_id != null and user_id != ''">and user_id = #{user_id}</if>
+    </select>
+</mapper>
