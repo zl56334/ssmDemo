@@ -1,5 +1,7 @@
 package com.example.ssmdemo.utils;
 
+import cn.hutool.core.io.resource.ResourceUtil;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,7 +12,7 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 /**
- * @author 黑马程序员
+ * @author
  */
 public class RsaUtils {
 
@@ -23,7 +25,7 @@ public class RsaUtils {
      * @throws Exception
      */
     public static PublicKey getPublicKey(String filename) throws Exception {
-        byte[] bytes = readFile(filename);
+        byte[] bytes = ResourceUtil.readBytes(filename);
         return getPublicKey(bytes);
     }
 
@@ -35,7 +37,7 @@ public class RsaUtils {
      * @throws Exception
      */
     public static PrivateKey getPrivateKey(String filename) throws Exception {
-        byte[] bytes = readFile(filename);
+        byte[] bytes = ResourceUtil.readBytes(filename);
         return getPrivateKey(bytes);
     }
 

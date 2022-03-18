@@ -29,5 +29,5 @@ mybatis:
 # 下面几个是自定义的，rsa也是自定义的
 rsa:
   key:
-    pubKeyPath: C:\Users\robod\Desktop\auth_key\id_key_rsa.pub
-    priKeyPath: C:\Users\robod\Desktop\auth_key\id_key_rsa
+    pubKeyPath: rsakey/id_key_rsa.pub
+    priKeyPath: rsakey/id_key_rsa
