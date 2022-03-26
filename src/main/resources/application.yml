@@ -8,7 +8,7 @@ server:
       min-spare: 30
 
   servlet:
-    context-path: /admin
+    context-path: /
 
 spring:
   datasource:
@@ -26,8 +26,7 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.example.ssmdemo.model
 
-# 下面几个是自定义的，rsa也是自定义的
-rsa:
-  key:
-    pubKeyPath: rsakey/id_key_rsa.pub
-    priKeyPath: rsakey/id_key_rsa
+jwt:
+  header: Authorization
+  base64-secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+  token-validity-in-seconds: 3600

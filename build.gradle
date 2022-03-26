@@ -32,6 +32,13 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 
+    // jwt jwt相关依赖
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+    //JSON
+//    implementation 'com.alibaba.fastjson:fastjson'
+
+    //utils
     implementation 'cn.hutool:hutool-all:5.7.22'
 }
 

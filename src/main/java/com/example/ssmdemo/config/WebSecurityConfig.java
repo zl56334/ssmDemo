@@ -1,61 +1,93 @@
 package com.example.ssmdemo.config;
 
-import com.robod.filter.JwtLoginFilter;
-import com.robod.service.intf.UserService;
+
+import com.example.ssmdemo.security.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-/**
- * @author Robod
- * @date 2020/8/9 15:47
- */
+import javax.annotation.Resource;
+
 @Configuration
-@EnableWebSecurity      //加了这个注解才能写SpringSecurity相关的配置
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
-    private final UserService userService;
+    @Resource
+    private JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
-    private final RsaKeyProperties rsaKeyProperties;
+    @Resource
+    private JwtAuthenticationSuccessHandler jwtAuthenticationSuccessHandler;
 
-    public WebSecurityConfig(UserService userService, RsaKeyProperties rsaKeyProperties) {
-        this.userService = userService;
-        this.rsaKeyProperties = rsaKeyProperties;
-    }
+    @Resource
+    private LoginFailureHandler loginFailureHandler;
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    /**
-     * 认证用户的来源
-     *
-     * @param auth
-     * @throws Exception
-     */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //数据库中
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+    // 自定义的Jwt Token过滤器
+    @Bean
+    public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
+        return new JwtAuthenticationTokenFilter();
     }
 
-    /**
-     * 配置SpringSecurity相关信息
-     *
-     * @param http
-     * @throws Exception
-     */
+
+
+
     @Override
-    public void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()  //关闭csrf
-                .addFilter(new JwtLoginFilter(super.authenticationManager(),rsaKeyProperties))
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);    //禁用session
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .formLogin()
+                //自定义认证成功处理器
+                .successHandler(jwtAuthenticationSuccessHandler)
+                // 自定义失败拦截器
+                .failureHandler(loginFailureHandler)
+                // 自定义登录拦截URI
+                .loginProcessingUrl("/admin/login")
+                .and()
+                //token的验证方式不需要开启csrf的防护
+                .csrf().disable()
+                // 自定义认证失败类
+                .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                // 自定义权限不足处理类
+                .accessDeniedHandler(jwtAccessDeniedHandler)
+                .and()
+                //设置无状态的连接,即不创建session
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers("/admin/login").permitAll()
+                //配置允许匿名访问的路径
+                .anyRequest().authenticated();
+        // 解决跨域问题（重要）  只有在前端请求接口时才发现需要这个
+        httpSecurity.cors().and().csrf().disable();
+
+
+        //配置自己的jwt验证过滤器
+        httpSecurity
+                .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+
+        // disable page caching
+        httpSecurity.headers().cacheControl();
+    }
 }
