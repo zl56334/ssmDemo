@@ -15,7 +15,7 @@ public class DeviceController {
     @Autowired
     private DeviceService deviceService;
 
-    @RequestMapping("getdevicelist")
+    @RequestMapping("/getdevicelist")
     @ResponseBody
     public String getDeviceList(
             @RequestParam(value = "id",required = false) String id){

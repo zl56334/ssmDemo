@@ -58,12 +58,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .formLogin()
+                .loginPage("/login")
                 //自定义认证成功处理器
                 .successHandler(jwtAuthenticationSuccessHandler)
                 // 自定义失败拦截器
                 .failureHandler(loginFailureHandler)
                 // 自定义登录拦截URI
-                .loginProcessingUrl("/admin/login")
+                .loginProcessingUrl("/login")
                 .and()
                 //token的验证方式不需要开启csrf的防护
                 .csrf().disable()
@@ -76,7 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers("/admin/login").permitAll()
+                .antMatchers("/login").permitAll()
                 //配置允许匿名访问的路径
                 .anyRequest().authenticated();
         // 解决跨域问题（重要）  只有在前端请求接口时才发现需要这个
