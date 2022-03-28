@@ -1,6 +1,6 @@
 package com.example.ssmdemo.controller;
 
-import com.example.ssmdemo.model.Device;
+import com.example.ssmdemo.pojo.model.Device;
 import com.example.ssmdemo.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

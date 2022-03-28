@@ -1,6 +1,6 @@
 package com.example.ssmdemo.dao;
 
-import com.example.ssmdemo.model.Device;
+import com.example.ssmdemo.pojo.model.Device;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

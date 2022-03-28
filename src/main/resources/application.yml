@@ -11,12 +11,14 @@ server:
     context-path: /admin
 
 spring:
+#  数据库配置
   datasource:
     name: test
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/test
     username: root
     password: 123123
+#  页面配置
   mvc:
     view:
       suffix: .html
@@ -25,14 +27,17 @@ spring:
     thymeleaf:
       prefix: classpath:/templates/
 
+# 日志配置
 logging:
   level:
     com: debug
 
+# mybaits配置路径
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.example.ssmdemo.model
+  type-aliases-package: com.example.ssmdemo.pojo.model
 
+# jwt配置
 jwt:
   header: Authorization
   base64-secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9

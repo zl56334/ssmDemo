@@ -9,16 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.HashMap;
 
 @Controller
-@RequestMapping("auth")
 public class AuthController {
-    @RequestMapping("/get")
-    public Result get(){
-        HashMap map = new HashMap();
-        map.put("username","admin");
-        map.put("password","123456");
-        Result r = new Result();
-        r.code(ResultCode.SUCCESS).message("成功访问").data(map);
-        return r;
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
     }
 
     @PreAuthorize("hasAuthority('admin')")

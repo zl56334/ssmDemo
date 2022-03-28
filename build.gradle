@@ -32,6 +32,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 
+    //页面
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
     // jwt jwt相关依赖
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
 

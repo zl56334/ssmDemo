@@ -58,7 +58,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .formLogin()
-                .loginPage("/login")
                 //自定义认证成功处理器
                 .successHandler(jwtAuthenticationSuccessHandler)
                 // 自定义失败拦截器

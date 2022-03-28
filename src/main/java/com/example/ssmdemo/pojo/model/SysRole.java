@@ -1,4 +1,4 @@
-package com.example.ssmdemo.model;
+package com.example.ssmdemo.pojo.model;
 
 import lombok.Data;
 

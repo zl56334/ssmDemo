@@ -81,7 +81,6 @@ public class JwtTokenUtil {
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
-            e.printStackTrace();
             claims = null;
         }
         return claims;

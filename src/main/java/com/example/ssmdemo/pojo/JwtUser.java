@@ -1,6 +1,6 @@
 package com.example.ssmdemo.pojo;
 
-import com.example.ssmdemo.model.SysRole;
+import com.example.ssmdemo.pojo.model.SysRole;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

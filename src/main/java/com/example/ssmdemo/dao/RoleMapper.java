@@ -1,6 +1,6 @@
 package com.example.ssmdemo.dao;
 
-import com.example.ssmdemo.model.SysRole;
+import com.example.ssmdemo.pojo.model.SysRole;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
