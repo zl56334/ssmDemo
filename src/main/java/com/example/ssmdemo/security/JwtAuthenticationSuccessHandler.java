@@ -34,7 +34,7 @@ public class JwtAuthenticationSuccessHandler implements AuthenticationSuccessHan
         HashMap<String,Object> map = new HashMap<>();
         map.put("token", realToken);
         Result r = new Result();
-        r.code(ResultCode.SUCCESS).message("登录成功").data(map);
+        r.code(ResultCode.LOGINSUCCESS).message("登录成功").data(map);
 
         //将生成的authentication放入容器中，生成安全的上下文
         SecurityContextHolder.getContext().setAuthentication(authentication);

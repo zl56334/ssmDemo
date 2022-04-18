@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+
 @Controller
 @RequestMapping("device")
 public class DeviceController {
@@ -18,7 +19,7 @@ public class DeviceController {
     @RequestMapping("/getdevicelist")
     @ResponseBody
     public String getDeviceList(
-            @RequestParam(value = "id",required = false) String id){
+            @RequestParam(value = "id", required = false) String id) throws Exception {
         Device device = new Device();
         device.setId(id);
         String reStr = deviceService.selectDevice(device).toString();
@@ -26,3 +27,4 @@ public class DeviceController {
         return reStr;
     }
 }
+

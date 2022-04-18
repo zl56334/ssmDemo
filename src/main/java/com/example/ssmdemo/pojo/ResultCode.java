@@ -11,4 +11,6 @@ public class ResultCode {
     public static Integer FORBIDDEN = 403;
 
     public static Integer UNAUTHORIZED = 401;
+
+    public static Integer LOGINSUCCESS = 20000;
 }

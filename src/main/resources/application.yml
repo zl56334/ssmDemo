@@ -18,7 +18,17 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/test
     username: root
     password: 123123
-#  页面配置
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 10000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      pool-name: test
+      auto-commit: true
+      connection-test-query: SELECT 1
+      connection-init-sql: SET NAMES utf8mb4
+  #  页面配置
   mvc:
     view:
       suffix: .html
