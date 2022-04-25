@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ssmdemo.dao.UserDao">
+    <select id="selectUserById" resultType="com.example.ssmdemo.entity.User">
+        select id,username,password,name,status from sys_user where id = #{id}
+    </select>
+
+    <select id="selectUserByName" resultType="com.example.ssmdemo.entity.User">
+        select id,username,password,name,status from sys_user where username = #{username}
+    </select>
+</mapper>

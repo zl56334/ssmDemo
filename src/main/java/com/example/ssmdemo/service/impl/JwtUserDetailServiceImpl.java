@@ -1,6 +1,6 @@
 package com.example.ssmdemo.service.impl;
 
-import com.example.ssmdemo.dao.UserMapper;
+import com.example.ssmdemo.dao.UserDao;
 import com.example.ssmdemo.pojo.JwtUser;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 public class JwtUserDetailServiceImpl implements UserDetailsService {
 
     @Resource
-    private UserMapper userMapper;
+    private UserDao userMapper;
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         JwtUser user = userMapper.findByUsername(userName);

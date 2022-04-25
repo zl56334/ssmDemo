@@ -1,4 +1,4 @@
-package com.example.ssmdemo.mapper;
+package com.example.ssmdemo.dao;
 
 import com.example.ssmdemo.pojo.model.Users;
 import com.example.ssmdemo.pojo.model.UsersExample.Criteria;

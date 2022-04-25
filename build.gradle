@@ -25,7 +25,6 @@ configurations {
         extendsFrom annotationProcessor
     }
 
-    mybatisGenerator
 }
 
 repositories {
@@ -110,13 +109,13 @@ dependencies {
 
 //#自定义的task mybatisGenerate
 task mybatisGenerate {
-    ant.taskdef(
-            name: 'mbgenerator',
-            classname: 'org.mybatis.generator.ant.GeneratorAntTask',
-            classpath: configurations.mybatisGenerator.asPath
-    )
-    ant.mbgenerator(overwrite: true,
-            configfile: 'src/main/resources/generator/generatorConfig.xml', verbose: true)
+//    ant.taskdef(
+//            name: 'mbgenerator',
+//            classname: 'org.mybatis.generator.ant.GeneratorAntTask',
+//            classpath: configurations.mybatisGenerator.asPath
+//    )
+//    ant.mbgenerator(overwrite: true,
+//            configfile: 'src/main/resources/generator/generatorConfig.xml', verbose: true)
 }
 
 tasks.named('test') {
