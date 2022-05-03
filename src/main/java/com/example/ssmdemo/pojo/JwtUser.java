@@ -17,6 +17,7 @@ public class JwtUser implements UserDetails {   //实现UserDeails接口
     private String username;
     //密码
     private String password;
+
     // 权限（角色）列表
     Collection<? extends GrantedAuthority> authorities;
 

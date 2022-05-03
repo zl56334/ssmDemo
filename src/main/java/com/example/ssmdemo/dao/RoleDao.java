@@ -20,4 +20,9 @@ public interface RoleDao {
             "WHERE r.id=ur.rid AND ur.uid=#{uid}")
     public List<SysRole> findByUid(Integer uid);
 
+    @Select("SELECT r.role_name as roleName " +
+            "FROM sys_role r, sys_user_role ur " +
+            "WHERE r.id=ur.rid AND ur.uid=#{uid}")
+    public List<String> findRoleNameByUid(Integer uid);
+
 }

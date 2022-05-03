@@ -49,6 +49,6 @@ mybatis:
 
 # jwt配置
 jwt:
-  header: Authorization
+  header: X-Token
   base64-secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
   token-validity-in-seconds: 14400000

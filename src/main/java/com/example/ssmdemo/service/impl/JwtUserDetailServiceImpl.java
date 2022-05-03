@@ -15,6 +15,7 @@ public class JwtUserDetailServiceImpl implements UserDetailsService {
 
     @Resource
     private UserDao userMapper;
+
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         JwtUser user = userMapper.findByUsername(userName);
