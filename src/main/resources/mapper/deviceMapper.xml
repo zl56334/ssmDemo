@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.ssmdemo.dao.DeviceDao">
-    <select id="selectDevice" resultType="com.example.ssmdemo.pojo.model.Device" parameterType="com.example.ssmdemo.pojo.model.Device">
+<mapper namespace="com.example.ssmdemo.module.sys.dao.DeviceDao">
+    <select id="selectDevice" resultType="com.example.ssmdemo.module.sys.pojo.model.Device" parameterType="com.example.ssmdemo.module.sys.pojo.model.Device">
         select * from device WHERE 1=1
         <if test="id != null and id != ''">and id = #{id}</if>
         <if test="title != null and title != ''">and title = #{title}</if>

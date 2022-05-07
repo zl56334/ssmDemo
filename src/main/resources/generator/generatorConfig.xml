@@ -26,8 +26,8 @@
         <javaTypeResolver>
             <property name="forceBigDecimals" value="true" />
         </javaTypeResolver>
-        <javaModelGenerator targetPackage="com.example.ssmdemo.pojo.model" targetProject="src/main/java" />
-        <sqlMapGenerator targetPackage="com.example.ssmdemo.dao" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.example.ssmdemo.module.sys.pojo.model" targetProject="src/main/java" />
+        <sqlMapGenerator targetPackage="com.example.ssmdemo.module.sys.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
         <javaClientGenerator type="ANNOTATEDMAPPER"

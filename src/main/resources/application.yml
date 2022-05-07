@@ -45,7 +45,7 @@ logging:
 # mybaits配置路径
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.example.ssmdemo.pojo.model
+  type-aliases-package: com.example.ssmdemo.module.sys.pojo.model
 
 # jwt配置
 jwt:
