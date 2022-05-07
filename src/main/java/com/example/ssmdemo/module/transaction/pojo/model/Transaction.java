@@ -1,4 +1,4 @@
-package com.example.ssmdemo.module.transaction.model;
+package com.example.ssmdemo.module.transaction.pojo.model;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

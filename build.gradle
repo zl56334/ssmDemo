@@ -30,6 +30,7 @@ configurations {
 repositories {
     // 使用国内阿里云仓库，下载速度快
     maven { url 'https://maven.aliyun.com/repository/gradle-plugin'}
+    mavenCentral()
 }
 
 // 应用插件
@@ -98,9 +99,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
-    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
     //数据库连接池
-    implementation 'com.zaxxer:HikariCP:3.2.0'
+    implementation 'com.zaxxer:HikariCP:5.0.1'
 
     //页面
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -108,8 +109,8 @@ dependencies {
     // jwt jwt相关依赖
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
-    //JSON
-//    implementation 'com.alibaba.fastjson:fastjson'
+    // https://mvnrepository.com/artifact/io.swagger/swagger-annotations
+    implementation 'io.swagger:swagger-annotations:1.6.2'
 
     //utils
     implementation 'cn.hutool:hutool-all:5.7.22'
